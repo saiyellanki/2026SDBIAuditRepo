@@ -1,0 +1,9 @@
+{
+"company_secrets": {
+"aws_access_key": "AKIAIOSFODNN7ITAUDIT2026SDBI",
+"aws_secret_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+"internal_endpoint": "10.0.0.1:8080/api/v1/proprietary"
+},
+"ip_address": "192.168.1.100",
+"version": "1.2.3-internal"
+}
