@@ -1,0 +1,32 @@
+from faker import Faker
+import json
+
+fake = Faker()
+
+# Generate fake sensitive data
+api_key = fake.sha256()[:32].upper()
+db_pass = fake.password(length=16, special_chars=True)
+ssn = fake.ssn()
+cc = fake.credit_card_number()
+ip = fake.ipv4()
+email = fake.ascii_safe_email()
+
+# Create Python dummy file content
+dummy_code = f'''# proprietary_service.py - CONFIDENTIAL
+API_KEY = "{api_key}"
+DB_PASSWORD = "{db_pass}"
+DB_HOST = "{ip}:5432"
+
+def process_employee(emp_id):
+return {{"ssn": "{ssn}", "cc": "{cc}", "email": "{email}"}}
+'''
+print(dummy_code)
+
+# Optional: JSON config
+config = {
+"secrets": {
+"aws_key": fake.hexify(text='??aaa-????-????-????-aaaaaaaaaa'),
+"endpoint": f"https://{fake.domain_name()}/internal"
+}
+}
+print(json.dumps(config, indent=2))
